@@ -1,0 +1,19 @@
+{
+    "name": "hexcores/api-support",
+    "description": "Support library for API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nyan Lynn Htut",
+            "email": "nyanlynnhtut@hexcores.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Hexcores\\Api": "src/"
+        }
+    },
+    "require": {}
+}
