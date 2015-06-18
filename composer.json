@@ -1,6 +1,7 @@
 {
     "name": "hexcores/api-support",
     "description": "Support library for API",
+    "keywords": ["api", "support"],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -12,8 +13,11 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Hexcores\\Api": "src/"
-        }
+            "Hexcores\\Api\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "require": {}
 }
