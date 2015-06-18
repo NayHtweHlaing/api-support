@@ -11,7 +11,7 @@ class Response
 
 	public function ok($data, array $headers = [])
 	{
-        return $this->jsonResponse($data, 200, $haders);
+        return $this->jsonResponse($data, 200, $headers);
 	}
 
 	public function missing($message = null, array $headers = [])
@@ -20,14 +20,14 @@ class Response
 
 		$data = $this->getErrorData($message);
 
-		return $this->jsonResponse($data, 404, $haders);
+		return $this->jsonResponse($data, 404, $headers);
 	}
 
 	public function error($message, $status = 500, array $headers = [])
 	{
 		$data = $this->getErrorData($message);
 
-		return $this->jsonResponse($data, $status, $haders);
+		return $this->jsonResponse($data, $status, $headers);
 	}
 
 	public function unauthorized($message = null, array $headers = [])
@@ -36,7 +36,7 @@ class Response
 		
 		$data = $this->getErrorData($message);
 
-		return $this->jsonResponse($data, 401, $haders);
+		return $this->jsonResponse($data, 401, $headers);
 	}
 
 	public function jsonResponse($data, $status, array $headers = [], $options = 0)

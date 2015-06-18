@@ -19,5 +19,8 @@
             "src/helpers.php"
         ]
     },
-    "require": {}
+    "require": {
+        "illuminate/support": "5.*",
+        "illuminate/http" : "5.*"
+    }
 }
