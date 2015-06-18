@@ -18,5 +18,21 @@ class VerifyApiRequestHeader
     {
     	$appKey = env('API_APP_KEY', '');
     	$appSecret = env('API_APP_SECRET', '');
+
+    	$headerKey = $request->header('X-API-KEY');
+    	$headerSecret = $request->header('X-API-SECRET');
+
+    	if ($appKey !== $headerKey)
+    	{
+    		return response_unauthorized();
+    	}
+
+    	if ($appSecret !== $headerSecret)
+    	{
+    		return response_unauthorized();
+    	}
+
+    	
+    	return $next($request);
     }
 }
