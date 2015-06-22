@@ -16,6 +16,6 @@ class Response extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'Hexcores\Api\Response';
+        return 'Hexcores\Api\Http\Response';
     }
 }

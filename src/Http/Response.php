@@ -1,6 +1,6 @@
 <?php
 
-namespace Hexcores\Api;
+namespace Hexcores\Api\Http;
 
 use JsonSerializable;
 use Illuminate\Http\JsonResponse;

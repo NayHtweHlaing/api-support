@@ -10,7 +10,7 @@ if (!function_exists('response_ok')) {
      */
     function response_ok($data = '', array $headers = [])
     {
-        $response = app('Hexcores\Api\Response');
+        $response = app('Hexcores\Api\Http\Response');
 
         return $response->ok($data, $headers);
     }
@@ -26,7 +26,7 @@ if (!function_exists('response_missing')) {
      */
     function response_missing($message = null, array $headers = [])
     {
-        $response = app('Hexcores\Api\Response');
+        $response = app('Hexcores\Api\Http\Response');
         
         return $response->missing($message, $headers);
     }
@@ -43,7 +43,7 @@ if (!function_exists('response_error')) {
      */
     function response_error($message, $status = 500, array $headers = [])
     {
-        $response = app('Hexcores\Api\Response');
+        $response = app('Hexcores\Api\Http\Response');
         
         return $response->error($message, $status, $headers);
     }
@@ -59,7 +59,7 @@ if (!function_exists('response_unauthorized')) {
      */
     function response_unauthorized($message = null, array $headers = [])
     {
-        $response = app('Hexcores\Api\Response');
+        $response = app('Hexcores\Api\Http\Response');
         
         return $response->unauthorized($message, $headers);
     }
