@@ -2,6 +2,8 @@
 
 namespace Hexcores\Api\Facades;
 
+use Illuminate\Support\Facades\Facade;
+
 /**
  * @see \Hexcores\Api\Response
  */
