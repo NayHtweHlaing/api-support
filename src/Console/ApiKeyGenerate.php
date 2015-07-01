@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Hexcores\Api\Console;
 
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
