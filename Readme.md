@@ -73,13 +73,13 @@ You can use helper functions for each response.
 VerifyApiRequestHeader middleware is used for api request access checking. 
 You need to pass `X-API-KEY` and `X-API-SECRET` headers for reuqest.
 
-*Note: Add `API_APP_KEY` and `API_APP_SECRET` at `.env` file*
+*Note: Add `X-API-KEY` and `X-API-SECRET` at `.env` file*
 
 If you want to add multiple key, use comma for key string from `.env` file.
 
 Example :
 
 ```
-API_APP_KEY=first_key,second_key,third_key
-API_APP_SECRET=first_secret,second_secret,third_secret
+X-API-KEY=first_key,second_key,third_key
+X-API-SECRET=first_secret,second_secret,third_secret
 ```

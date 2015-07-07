@@ -7,6 +7,9 @@ use Closure;
 class VerifyApiRequestHeader
 {
 
+    const X_KEY = 'X-API-KEY';
+    const X_SECRET = 'X-API-SECRET';
+
     /**
      * Handle an incoming request.
      *
@@ -16,8 +19,8 @@ class VerifyApiRequestHeader
      */
     public function handle($request, Closure $next)
     {
-        $appKey = $request->header('X-API-KEY');
-        $appSecret = $request->header('X-API-SECRET');
+        $appKey = $request->header(static::X_KEY);
+        $appSecret = $request->header(static::X_SECRET);
 
         if ( ! $this->validAppKey($appKey))
         {
@@ -40,7 +43,7 @@ class VerifyApiRequestHeader
      */
     protected function validAppKey($key)
     {
-        $lists = $this->getKeyListsFromEnvVariable('API_APP_KEY');
+        $lists = $this->getKeyListsFromEnvVariable(static::X_KEY);
 
         // Return true if key lists is not set in '.env' file.
         if ( empty($lists)) return true;
@@ -56,7 +59,7 @@ class VerifyApiRequestHeader
      */
     protected function validAppSecret($key)
     {
-        $lists = $this->getKeyListsFromEnvVariable('API_APP_SECRET');
+        $lists = $this->getKeyListsFromEnvVariable(static::X_SECRET);
 
         // Return true if key lists is not set in '.env' file.
         if ( empty($lists)) return true;
