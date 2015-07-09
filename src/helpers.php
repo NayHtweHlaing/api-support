@@ -64,3 +64,39 @@ if (!function_exists('response_unauthorized')) {
         return $response->unauthorized($message, $headers);
     }
 }
+
+if (! function_exists('timestamp')) {
+    /**
+     * Change date time to api ready date time
+     * 
+     * @param  mixed $value Your date time
+     * @return int
+     */
+    function timestamp($value)
+    {
+        // If this value is an integer,
+        // we will assume it is a UNIX timestamp's value
+        // and return this value
+        if ( is_numeric($value)) {
+            return $value;
+        }
+
+        // If this value is instance of MongoDate
+        // we will return 'sec' value from this instance.
+        if ($value instanceof MongoDate) {
+            return $value->sec;
+        }
+
+        // Convert from year, month, day format (Y-m-d)
+        // to Carbon instance
+        if (preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $value)) {
+            $value = Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
+        }
+
+        if ( $value instanceof DateTime ) {
+            return $value->getTimestamp();
+        }
+
+        return $value;
+    }
+}
