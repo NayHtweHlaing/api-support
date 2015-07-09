@@ -83,3 +83,44 @@ Example :
 X-API-KEY=first_key,second_key,third_key
 X-API-SECRET=first_secret,second_secret,third_secret
 ```
+
+## Key Generator
+
+You can use artisan command to generate new key.
+
+Command usage - 
+
+Generate new keys and added at .env file
+
+```
+php artisan api:key
+```
+
+Show current register keys from .env file.
+
+```
+php artisan api:key --current
+```
+
+Print only the new keys
+
+```
+php artisan api:key --print
+```
+
+Replace new keys with current register keys from .env file
+
+```
+php artisan api:key --replace
+```
+
+Add artisan command in `app/console/Kernel.php`
+
+```
+protected $commands = [
+    \App\Console\Commands\Inspire::class,
+    // Other commands.
+	Hexcores\Api\Console\ApiKeyGenerate,    
+];
+
+```
