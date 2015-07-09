@@ -17,7 +17,7 @@ class ApiKeyGenerate extends Command
      *
      * @var string
      */
-    protected $signature = 'api:key {--print= : Print only the keys} {--replace= : Replace current keys with new}';
+    protected $signature = 'api:key {--current= : Show current keys} {--print= : Print only the keys} {--replace= : Replace current keys with new}';
 
     /**
      * The console command description.
@@ -49,6 +49,12 @@ class ApiKeyGenerate extends Command
         $oldKey = env('X-API-KEY');
         $oldSecret = env('X-API-SECRET');
 
+        // Show current keys.
+        if ($this->option('current')) {
+            return $this->printKeys($oldKey, $oldSecret);
+        }
+
+        // Print only the new keys.
         if ($this->option('print')) {
             return $this->printKeys($newKey, $newSecret);
         }
