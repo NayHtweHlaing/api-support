@@ -69,7 +69,15 @@ class ApiKeyGenerate extends Command
             $search = ['X-API-KEY='.$oldKey, 'X-API-SECRET='.$oldSecret];
             $replace = ['X-API-KEY='.$replaceKey, 'X-API-SECRET='.$replaceSecret];
 
-            file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
+            $content = file_get_contents($path);
+
+            str_replace($search, $replace, $content, $count);
+
+            if ( $count == 0) {
+                $content .= "\n\n" . implode($replace, "\n");
+            }
+
+            file_put_contents($path, $content);
         }
 
         $this->info("API Middleware (X-API-KEY, X-API-SECRET) keys set successfully.");
