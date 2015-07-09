@@ -17,7 +17,7 @@ class ApiKeyGenerate extends Command
      *
      * @var string
      */
-    protected $signature = 'api:key {--current= : Show current keys} {--print= : Print only the keys} {--replace= : Replace current keys with new}';
+    protected $signature = 'api:key {--current : Show current keys} {--print : Print only the keys} {--replace : Replace current keys with new}';
 
     /**
      * The console command description.
