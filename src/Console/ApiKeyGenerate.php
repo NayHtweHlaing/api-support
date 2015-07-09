@@ -78,9 +78,11 @@ class ApiKeyGenerate extends Command
             }
 
             file_put_contents($path, $content);
+            
+            $this->info("API Middleware (X-API-KEY, X-API-SECRET) keys set successfully.");
+        } else {
+            $this->info(".env file doesn't exists.");
         }
-
-        $this->info("API Middleware (X-API-KEY, X-API-SECRET) keys set successfully.");
     }
 
     /**
