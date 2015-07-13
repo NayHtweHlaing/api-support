@@ -21,6 +21,11 @@
     },
     "require": {
         "illuminate/support": "5.*",
-        "illuminate/http" : "5.*"
+        "illuminate/http" : "5.*",
+        "nesbot/carbon": "~1.19"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~4.0"
     }
 }

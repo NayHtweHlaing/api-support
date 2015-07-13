@@ -67,7 +67,7 @@ if (!function_exists('response_unauthorized')) {
 
 if (! function_exists('timestamp')) {
     /**
-     * Change date time to api ready date time
+     * Change date time to api ready timestamp
      * 
      * @param  mixed $value Your date time
      * @return int
@@ -90,7 +90,7 @@ if (! function_exists('timestamp')) {
         // Convert from year, month, day format (Y-m-d)
         // to Carbon instance
         if (preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $value)) {
-            $value = Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
+            $value = Carbon\Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
         }
 
         if ( $value instanceof DateTime ) {
