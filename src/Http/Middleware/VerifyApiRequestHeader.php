@@ -11,6 +11,13 @@ class VerifyApiRequestHeader
     const X_SECRET = 'X-API-SECRET';
 
     /**
+     * The URIs will be except from verify.
+     *
+     * @var array
+     */
+    protected $except = [];
+
+    /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -19,20 +26,39 @@ class VerifyApiRequestHeader
      */
     public function handle($request, Closure $next)
     {
-        $appKey = $request->header(static::X_KEY);
-        $appSecret = $request->header(static::X_SECRET);
+        if ( ! $this->shouldExcept($request)) {
+            $appKey = $request->header(static::X_KEY);
+            $appSecret = $request->header(static::X_SECRET);
 
-        if ( ! $this->validAppKey($appKey))
-        {
-            return response_unauthorized();
+            if ( ! $this->validAppKey($appKey))
+            {
+                return response_unauthorized();
+            }
+
+            if ( ! $this->validAppSecret($appSecret))
+            {
+                return response_unauthorized();
+            }
         }
 
-        if ( ! $this->validAppSecret($appSecret))
-        {
-            return response_unauthorized();
-        }
-        
         return $next($request);
+    }
+
+    /**
+     * Check given request's uri is except lists or not.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return boolean
+     */
+    protected function shouldExcept($request)
+    {
+        foreach ($this->except as $except) {
+            if ( $request->is($except)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
